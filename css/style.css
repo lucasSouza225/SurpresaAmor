@@ -1,0 +1,419 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --cor-primaria: #f8d7da;
+            --cor-secundaria: #f9f0f2;
+            --cor-destaque: #e6a4b4;
+            --cor-texto: #5d5d5d;
+            --cor-titulo: #c44569;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8d7da 0%, #f9f0f2 100%);
+            color: var(--cor-texto);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Tela de Introdução */
+        .tela-inicio {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8d7da 0%, #f9f0f2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .tela-inicio.fade-out {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .coracao-grande {
+            font-size: 4rem;
+            color: var(--cor-destaque);
+            margin-bottom: 30px;
+            animation: pulsar 2s infinite;
+        }
+
+        @keyframes pulsar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .mensagem-inicio {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 80%;
+        }
+
+        .titulo-inicio {
+            font-size: 2.5rem;
+            color: var(--cor-titulo);
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .subtitulo-inicio {
+            font-size: 1.2rem;
+            color: var(--cor-texto);
+        }
+
+        .btn-iniciar {
+            background: linear-gradient(135deg, var(--cor-destaque), #d48fa3);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(230, 164, 180, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-iniciar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(230, 164, 180, 0.6);
+        }
+
+        .flores-inicio {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flor-inicio {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--cor-destaque);
+            opacity: 0.7;
+        }
+
+        /* Conteúdo Principal (inicialmente escondido) */
+        .conteudo-principal {
+            width: 100%;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .conteudo-principal.mostrar {
+            display: block;
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            width: 100%;
+        }
+
+        .titulo {
+            font-size: 2.2rem;
+            color: var(--cor-titulo);
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .subtitulo {
+            font-size: 1rem;
+            color: var(--cor-texto);
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .decoracao {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .flor {
+            color: var(--cor-destaque);
+            font-size: 1.2rem;
+            animation: flutuar 3s infinite ease-in-out;
+        }
+
+        .flor:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .flor:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .cartao {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .carrossel-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+        }
+
+        .carrossel-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fafafa;
+            position: relative;
+        }
+
+        .carrossel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carrossel-legenda {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .carrossel-controles {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .carrossel-btn {
+            background-color: var(--cor-destaque);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(230, 164, 180, 0.3);
+        }
+
+        .carrossel-btn:hover {
+            background-color: #d48fa3;
+            transform: translateY(-2px);
+        }
+
+        .indicadores {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .indicador {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicador.ativo {
+            background-color: var(--cor-destaque);
+        }
+
+        .mensagem {
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        .mensagem p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .mensagem-destaque {
+            font-style: italic;
+            color: var(--cor-titulo);
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .assinatura {
+            text-align: right;
+            margin-top: 20px;
+            font-weight: 500;
+            color: var(--cor-titulo);
+        }
+
+        .player-musica {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        .info-musica {
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .titulo-musica {
+            font-size: 1.1rem;
+            color: var(--cor-titulo);
+            margin-bottom: 5px;
+        }
+
+        .controles-musica {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-musica {
+            background-color: var(--cor-destaque);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(230, 164, 180, 0.3);
+        }
+
+        .btn-musica.principal {
+            width: 60px;
+            height: 60px;
+        }
+
+        .btn-musica:hover {
+            background-color: #d48fa3;
+            transform: translateY(-2px);
+        }
+
+        .barra-progresso {
+            width: 100%;
+            height: 4px;
+            background-color: #e0e0e0;
+            border-radius: 2px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progresso {
+            height: 100%;
+            background-color: var(--cor-destaque);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--cor-texto);
+            font-size: 0.9rem;
+            padding: 15px;
+        }
+
+        .coracao {
+            color: var(--cor-destaque);
+            display: inline-block;
+            animation: pulsar 1.5s infinite;
+        }
+
+        /* Animações suaves para entrada */
+        .cartao, header {
+            animation: surgir 1s ease-out;
+        }
+
+        @keyframes surgir {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Melhorias para telas muito pequenas */
+        @media (max-width: 360px) {
+            .titulo {
+                font-size: 1.8rem;
+            }
+            
+            .carrossel-container {
+                height: 280px;
+            }
+            
+            .mensagem p {
+                font-size: 1rem;
+            }
+            
+            .titulo-inicio {
+                font-size: 2rem;
+            }
+            
+            .subtitulo-inicio {
+                font-size: 1rem;
+            }
+        }
