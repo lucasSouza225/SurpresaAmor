@@ -6,17 +6,17 @@
         }
 
         :root {
-            --amarelo-claro: #FFF9C4;
+            --amarelo-claro: #f3e991;
             --amarelo-medio: #ffe100;
             --amarelo-escuro: #ffb700;
-            --azul-claro: #E3F2FD;
+            --azul-claro: #b5defc;
             --azul-medio: #69bbff;
             --azul-escuro: #004ddd;
-            --verde-claro: #E8F5E8;
-            --verde-medio: #70e476;
-            --verde-escuro: #00a308;
+            --verde-claro: #c1fcc1;
+            --verde-medio: #6cfd73;
+            --verde-escuro: #018b08;
             --branco: #FFFFFF;
-            --preto: #202020;
+            --preto: #000000;
             --cinza-claro: #F5F5F5;
         }
 
@@ -411,12 +411,12 @@
         .coracao {
             color: var(--azul-escuro);
             display: inline-block;
-            animation: pulsar 1.5s infinite;
+            animation: pulsar .5s infinite;
         }
 
         /* Animações suaves para entrada */
         .cartao, header {
-            animation: surgir 1s ease-out;
+            animation: surgir .5s ease-out;
         }
 
         @keyframes surgir {
