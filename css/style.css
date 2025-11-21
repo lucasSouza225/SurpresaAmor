@@ -58,7 +58,7 @@
             font-size: 4rem;
             color: var(--azul-escuro);
             margin-bottom: 30px;
-            animation: pulsar 2s infinite;
+            animation: pulsar 1s infinite;
         }
 
         @keyframes pulsar {
