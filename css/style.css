@@ -6,16 +6,23 @@
         }
 
         :root {
-            --cor-primaria: #f8d7da;
-            --cor-secundaria: #f9f0f2;
-            --cor-destaque: #e6a4b4;
-            --cor-texto: #5d5d5d;
-            --cor-titulo: #c44569;
+            --amarelo-claro: #FFF9C4;
+            --amarelo-medio: #ffe100;
+            --amarelo-escuro: #ffb700;
+            --azul-claro: #E3F2FD;
+            --azul-medio: #69bbff;
+            --azul-escuro: #004ddd;
+            --verde-claro: #E8F5E8;
+            --verde-medio: #70e476;
+            --verde-escuro: #00a308;
+            --branco: #FFFFFF;
+            --preto: #202020;
+            --cinza-claro: #F5F5F5;
         }
 
         body {
-            background: linear-gradient(135deg, #f8d7da 0%, #f9f0f2 100%);
-            color: var(--cor-texto);
+            background: linear-gradient(135deg, var(--amarelo-claro) 0%, var(--azul-claro) 50%, var(--verde-claro) 100%);
+            color: var(--preto);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -32,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #f8d7da 0%, #f9f0f2 100%);
+            background: linear-gradient(135deg, var(--amarelo-claro) 0%, var(--azul-claro) 50%, var(--verde-claro) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -49,7 +56,7 @@
 
         .coracao-grande {
             font-size: 4rem;
-            color: var(--cor-destaque);
+            color: var(--azul-escuro);
             margin-bottom: 30px;
             animation: pulsar 2s infinite;
         }
@@ -67,34 +74,36 @@
 
         .titulo-inicio {
             font-size: 2.5rem;
-            color: var(--cor-titulo);
+            color: var(--verde-escuro);
             margin-bottom: 15px;
-            font-weight: 300;
+            font-weight: 600;
         }
 
         .subtitulo-inicio {
             font-size: 1.2rem;
-            color: var(--cor-texto);
+            color: var(--preto);
         }
 
         .btn-iniciar {
-            background: linear-gradient(135deg, var(--cor-destaque), #d48fa3);
-            color: white;
+            background: linear-gradient(135deg, var(--azul-medio), var(--verde-medio));
+            color: var(--branco);
             border: none;
             padding: 15px 40px;
             font-size: 1.2rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(230, 164, 180, 0.4);
+            box-shadow: 0 8px 20px rgba(100, 181, 246, 0.4);
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 600;
         }
 
         .btn-iniciar:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(230, 164, 180, 0.6);
+            box-shadow: 0 12px 25px rgba(100, 181, 246, 0.6);
+            background: linear-gradient(135deg, var(--azul-escuro), var(--verde-escuro));
         }
 
         .flores-inicio {
@@ -107,7 +116,7 @@
         .flor-inicio {
             position: absolute;
             font-size: 1.5rem;
-            color: var(--cor-destaque);
+            color: var(--verde-medio);
             opacity: 0.7;
         }
 
@@ -138,16 +147,16 @@
 
         .titulo {
             font-size: 2.2rem;
-            color: var(--cor-titulo);
+            color: var(--verde-escuro);
             margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: 600;
             letter-spacing: 1px;
         }
 
         .subtitulo {
             font-size: 1rem;
-            color: var(--cor-texto);
-            font-weight: 300;
+            color: var(--preto);
+            font-weight: 500;
             margin-bottom: 15px;
         }
 
@@ -159,17 +168,19 @@
         }
 
         .flor {
-            color: var(--cor-destaque);
+            color: var(--azul-medio);
             font-size: 1.2rem;
             animation: flutuar 3s infinite ease-in-out;
         }
 
         .flor:nth-child(2) {
             animation-delay: 0.5s;
+            color: var(--verde-medio);
         }
 
         .flor:nth-child(3) {
             animation-delay: 1s;
+            color: var(--amarelo-escuro);
         }
 
         @keyframes flutuar {
@@ -178,13 +189,13 @@
         }
 
         .cartao {
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.92);
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 25px;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .carrossel-container {
@@ -194,6 +205,7 @@
             overflow: hidden;
             border-radius: 15px;
             margin-bottom: 15px;
+            border: 3px solid var(--azul-claro);
         }
 
         .carrossel {
@@ -208,7 +220,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #fafafa;
+            background: linear-gradient(135deg, var(--amarelo-claro), var(--azul-claro));
             position: relative;
         }
 
@@ -223,11 +235,12 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.5));
-            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: var(--branco);
             padding: 15px;
             text-align: center;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .carrossel-controles {
@@ -238,8 +251,8 @@
         }
 
         .carrossel-btn {
-            background-color: var(--cor-destaque);
-            color: white;
+            background-color: var(--azul-medio);
+            color: var(--branco);
             border: none;
             width: 40px;
             height: 40px;
@@ -249,11 +262,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(230, 164, 180, 0.3);
+            box-shadow: 0 4px 10px rgba(100, 181, 246, 0.4);
         }
 
         .carrossel-btn:hover {
-            background-color: #d48fa3;
+            background-color: var(--azul-escuro);
             transform: translateY(-2px);
         }
 
@@ -268,13 +281,14 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: #e0e0e0;
+            background-color: var(--cinza-claro);
             cursor: pointer;
             transition: background-color 0.3s;
+            border: 1px solid var(--azul-claro);
         }
 
         .indicador.ativo {
-            background-color: var(--cor-destaque);
+            background-color: var(--verde-medio);
         }
 
         .mensagem {
@@ -285,21 +299,25 @@
         .mensagem p {
             margin-bottom: 15px;
             font-size: 1.05rem;
+            color: var(--preto);
         }
 
         .mensagem-destaque {
             font-style: italic;
-            color: var(--cor-titulo);
+            color: var(--azul-escuro);
             font-size: 1.1rem;
             margin: 20px 0;
-            padding: 0 10px;
+            padding: 15px;
+            background-color: var(--amarelo-claro);
+            border-radius: 10px;
+            border-left: 4px solid var(--verde-medio);
         }
 
         .assinatura {
             text-align: right;
             margin-top: 20px;
-            font-weight: 500;
-            color: var(--cor-titulo);
+            font-weight: 600;
+            color: var(--verde-escuro);
         }
 
         .player-musica {
@@ -307,9 +325,10 @@
             flex-direction: column;
             align-items: center;
             padding: 20px 15px;
-            background-color: rgba(255, 255, 255, 0.7);
+            background: linear-gradient(135deg, var(--azul-claro), var(--verde-claro));
             border-radius: 15px;
             margin-top: 10px;
+            border: 2px solid var(--azul-medio);
         }
 
         .info-musica {
@@ -320,8 +339,9 @@
 
         .titulo-musica {
             font-size: 1.1rem;
-            color: var(--cor-titulo);
+            color: var(--verde-escuro);
             margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .controles-musica {
@@ -331,8 +351,8 @@
         }
 
         .btn-musica {
-            background-color: var(--cor-destaque);
-            color: white;
+            background-color: var(--azul-medio);
+            color: var(--branco);
             border: none;
             width: 50px;
             height: 50px;
@@ -342,23 +362,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(230, 164, 180, 0.3);
+            box-shadow: 0 4px 10px rgba(100, 181, 246, 0.4);
         }
 
         .btn-musica.principal {
             width: 60px;
             height: 60px;
+            background-color: var(--verde-medio);
         }
 
         .btn-musica:hover {
-            background-color: #d48fa3;
+            background-color: var(--azul-escuro);
             transform: translateY(-2px);
+        }
+
+        .btn-musica.principal:hover {
+            background-color: var(--verde-escuro);
         }
 
         .barra-progresso {
             width: 100%;
             height: 4px;
-            background-color: #e0e0e0;
+            background-color: var(--cinza-claro);
             border-radius: 2px;
             margin-top: 15px;
             overflow: hidden;
@@ -366,7 +391,7 @@
 
         .progresso {
             height: 100%;
-            background-color: var(--cor-destaque);
+            background: linear-gradient(90deg, var(--azul-medio), var(--verde-medio));
             width: 0%;
             transition: width 0.1s;
         }
@@ -374,13 +399,17 @@
         footer {
             text-align: center;
             margin-top: 20px;
-            color: var(--cor-texto);
+            color: var(--preto);
             font-size: 0.9rem;
             padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
         }
 
         .coracao {
-            color: var(--cor-destaque);
+            color: var(--azul-escuro);
             display: inline-block;
             animation: pulsar 1.5s infinite;
         }

@@ -147,16 +147,8 @@
         // =============================================
         const musicasRomanticas = [
             {
-                titulo: "Nossa Música Especial",
-                src: "COLE_AQUI_O_LINK_DA_SUA_MÚSICA_1"
-            },
-            {
-                titulo: "Música do Nosso Amor",
-                src: "COLE_AQUI_O_LINK_DA_SUA_MÚSICA_2"
-            },
-            {
-                titulo: "Canção Para Você",
-                src: "COLE_AQUI_O_LINK_DA_SUA_MÚSICA_3"
+                titulo: "Uma musica para você",
+                src: "audio/musicaDG.mp4"
             }
         ];
         // =============================================
@@ -237,7 +229,7 @@
         carregarMusica(indiceMusicaAtual);
         
         // Alternar automaticamente as imagens do carrossel a cada 5 segundos
-        setInterval(proximoSlide, 5000);
+        setInterval(proximoSlide, 8000);
         
         // Efeito de digitação para a mensagem (opcional)
         const mensagemDestaque = document.querySelector('.mensagem-destaque');
