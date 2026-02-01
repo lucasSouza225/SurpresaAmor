@@ -6,17 +6,17 @@
         }
 
         :root {
-            --amarelo-claro: #f3e991;
-            --amarelo-medio: #ffe100;
-            --amarelo-escuro: #ffb700;
-            --azul-claro: #b5defc;
-            --azul-medio: #69bbff;
-            --azul-escuro: #004ddd;
-            --verde-claro: #c1fcc1;
-            --verde-medio: #6cfd73;
-            --verde-escuro: #018b08;
+            --amarelo-claro: #FFF9C4;
+            --amarelo-medio: #FFEB3B;
+            --amarelo-escuro: #FBC02D;
+            --azul-claro: #E3F2FD;
+            --azul-medio: #64B5F6;
+            --azul-escuro: #1976D2;
+            --verde-claro: #E8F5E8;
+            --verde-medio: #66BB6A;
+            --verde-escuro: #2E7D32;
             --branco: #FFFFFF;
-            --preto: #000000;
+            --preto: #333333;
             --cinza-claro: #F5F5F5;
         }
 
@@ -30,6 +30,114 @@
             padding: 20px;
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Modal para foto ampliada */
+        .modal-foto {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-foto.mostrar {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-conteudo {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-foto-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-legenda {
+            color: var(--branco);
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 0 0 10px 10px;
+            margin-top: -5px;
+        }
+
+        .btn-fechar-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--branco);
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .btn-fechar-modal:hover {
+            color: var(--amarelo-medio);
+        }
+
+        .btn-anterior-modal, .btn-proximo-modal {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--branco);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-anterior-modal:hover, .btn-proximo-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--amarelo-medio);
+        }
+
+        .btn-anterior-modal {
+            left: 20px;
+        }
+
+        .btn-proximo-modal {
+            right: 20px;
+        }
+
+        .indice-foto {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--branco);
+            font-size: 1rem;
+            opacity: 0.8;
         }
 
         /* Tela de Introdução */
@@ -58,7 +166,7 @@
             font-size: 4rem;
             color: var(--azul-escuro);
             margin-bottom: 30px;
-            animation: pulsar 1s infinite;
+            animation: pulsar 2s infinite;
         }
 
         @keyframes pulsar {
@@ -222,6 +330,12 @@
             align-items: center;
             background: linear-gradient(135deg, var(--amarelo-claro), var(--azul-claro));
             position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .carrossel-item:hover {
+            transform: scale(1.01);
         }
 
         .carrossel-item img {
@@ -411,12 +525,12 @@
         .coracao {
             color: var(--azul-escuro);
             display: inline-block;
-            animation: pulsar .5s infinite;
+            animation: pulsar 1.5s infinite;
         }
 
         /* Animações suaves para entrada */
         .cartao, header {
-            animation: surgir .5s ease-out;
+            animation: surgir 1s ease-out;
         }
 
         @keyframes surgir {
@@ -444,5 +558,11 @@
             
             .subtitulo-inicio {
                 font-size: 1rem;
+            }
+            
+            .btn-anterior-modal, .btn-proximo-modal {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
             }
         }

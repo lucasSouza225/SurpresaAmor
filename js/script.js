@@ -1,4 +1,4 @@
-// =============================================
+ // =============================================
         // CONFIGURAÇÃO DA TELA DE INÍCIO
         // =============================================
         const telaInicio = document.getElementById('telaInicio');
@@ -8,7 +8,7 @@
 
         // Criar flores decorativas na tela de início
         function criarFlores() {
-            const flores = ['✿', '❀', '🌸', '💮', '🏵️'];
+            const flores = ['🌼', '🌻', '🌷', '💮', '🏵️', '🌸', '💐'];
             const numFlores = 15;
             
             for (let i = 0; i < numFlores; i++) {
@@ -32,8 +32,6 @@
             // Mostrar o conteúdo principal após um breve delay
             setTimeout(function() {
                 conteudoPrincipal.classList.add('mostrar');
-                // Iniciar a música automaticamente (opcional)
-                // tocarMusica();
             }, 1000);
             
             // Remover a tela de início do DOM após a transição
@@ -43,34 +41,44 @@
         });
 
         // =============================================
-        // CONFIGURAÇÃO DO CARROSSEL
+        // CONFIGURAÇÃO DO CARROSSEL E MODAL
         // =============================================
         const carrossel = document.getElementById('carrossel');
         const btnAnterior = document.getElementById('btn-anterior');
         const btnProximo = document.getElementById('btn-proximo');
         const indicadores = document.getElementById('indicadores');
         
+        // Elementos do modal
+        const modalFoto = document.getElementById('modalFoto');
+        const modalFotoImg = document.getElementById('modalFotoImg');
+        const modalLegenda = document.getElementById('modalLegenda');
+        const btnFecharModal = document.getElementById('btnFecharModal');
+        const btnAnteriorModal = document.getElementById('btnAnteriorModal');
+        const btnProximoModal = document.getElementById('btnProximoModal');
+        const indiceFoto = document.getElementById('indiceFoto');
+        
         // URLs das imagens (substitua pelas suas próprias fotos)
         const imagens = [
             {
-                url: 'img/5.jpg',
-                legenda: 'Momentos de cumplicidade'
-            },
-            {
-                url: 'img/2.jpg',
+                url: 'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 legenda: 'Nossa primeira aventura juntos'
             },
             {
-                url: 'img/3.jpg',
-                legenda: 'Para sempre e mais um pouco'
+                url: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                legenda: 'Momentos de cumplicidade'
             },
             {
-                url: 'img/4.jpg',
+                url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
                 legenda: 'Seu sorriso ilumina meu mundo'
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                legenda: 'Cada detalhe seu me encanta'
             }
         ];
         
         let indiceAtual = 0;
+        let indiceModal = 0;
         
         // Adiciona as imagens ao carrossel
         function inicializarCarrossel() {
@@ -81,10 +89,12 @@
                 // Item do carrossel
                 const item = document.createElement('div');
                 item.className = 'carrossel-item';
+                item.dataset.index = index;
                 
                 const img = document.createElement('img');
                 img.src = imagem.url;
                 img.alt = `Foto ${index + 1}`;
+                img.loading = 'lazy';
                 
                 const legenda = document.createElement('div');
                 legenda.className = 'carrossel-legenda';
@@ -93,6 +103,11 @@
                 item.appendChild(img);
                 item.appendChild(legenda);
                 carrossel.appendChild(item);
+                
+                // Adicionar evento de clique para ampliar a foto
+                item.addEventListener('click', () => {
+                    abrirModal(index);
+                });
                 
                 // Indicador
                 const indicador = document.createElement('div');
@@ -131,6 +146,56 @@
             atualizarCarrossel();
         }
         
+        // Funções para o modal de foto ampliada
+        function abrirModal(indice) {
+            indiceModal = indice;
+            atualizarModal();
+            modalFoto.classList.add('mostrar');
+            document.body.style.overflow = 'hidden'; // Impede rolagem da página
+        }
+        
+        function fecharModal() {
+            modalFoto.classList.remove('mostrar');
+            document.body.style.overflow = 'auto'; // Restaura rolagem da página
+        }
+        
+        function atualizarModal() {
+            const imagem = imagens[indiceModal];
+            modalFotoImg.src = imagem.url;
+            modalLegenda.textContent = imagem.legenda;
+            indiceFoto.textContent = `${indiceModal + 1} / ${imagens.length}`;
+        }
+        
+        function proximoModal() {
+            indiceModal = (indiceModal + 1) % imagens.length;
+            atualizarModal();
+        }
+        
+        function anteriorModal() {
+            indiceModal = (indiceModal - 1 + imagens.length) % imagens.length;
+            atualizarModal();
+        }
+        
+        // Fechar modal com a tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modalFoto.classList.contains('mostrar')) {
+                fecharModal();
+            }
+            if (event.key === 'ArrowRight' && modalFoto.classList.contains('mostrar')) {
+                proximoModal();
+            }
+            if (event.key === 'ArrowLeft' && modalFoto.classList.contains('mostrar')) {
+                anteriorModal();
+            }
+        });
+        
+        // Fechar modal clicando fora da imagem
+        modalFoto.addEventListener('click', function(event) {
+            if (event.target === modalFoto) {
+                fecharModal();
+            }
+        });
+        
         // =============================================
         // CONFIGURAÇÃO DO PLAYER DE MÚSICA
         // =============================================
@@ -147,8 +212,20 @@
         // =============================================
         const musicasRomanticas = [
             {
-                titulo: "Uma musica para você",
-                src: "audio/musicaDG.mp4"
+                titulo: "Momentos cumplicidade",
+                src: "img/5.jpg"
+            },
+            {
+                titulo: "Cada momento é inclivel ao seu lado ",
+                src: "img/2.jpg"
+            },
+            {
+                titulo: "Para sem juntos, e mais um pouco",
+                src: "img/3.jpg"
+            },
+            {
+                titulo: "Seu sorriso é o mais lindo",
+                src: "img/4.jpg"
             }
         ];
         // =============================================
@@ -208,6 +285,11 @@
         btnAnterior.addEventListener('click', slideAnterior);
         btnProximo.addEventListener('click', proximoSlide);
         
+        // Event listeners do modal
+        btnFecharModal.addEventListener('click', fecharModal);
+        btnAnteriorModal.addEventListener('click', anteriorModal);
+        btnProximoModal.addEventListener('click', proximoModal);
+        
         // Event listeners do player de música
         btnPlay.addEventListener('click', () => {
             if (estaTocando) {
@@ -229,7 +311,7 @@
         carregarMusica(indiceMusicaAtual);
         
         // Alternar automaticamente as imagens do carrossel a cada 5 segundos
-        setInterval(proximoSlide, 8000);
+        setInterval(proximoSlide, 5000);
         
         // Efeito de digitação para a mensagem (opcional)
         const mensagemDestaque = document.querySelector('.mensagem-destaque');
