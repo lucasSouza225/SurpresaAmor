@@ -60,19 +60,19 @@
         // URLs das imagens (substitua pelas suas próprias fotos)
         const imagens = [
             {
-                url: 'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                url: 'img/4.jpg',
                 legenda: 'Nossa primeira aventura juntos'
             },
             {
-                url: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                url: 'img/5.jpg',
                 legenda: 'Momentos de cumplicidade'
             },
             {
-                url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                url: 'img/3.jpg',
                 legenda: 'Seu sorriso ilumina meu mundo'
             },
             {
-                url: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                url: 'img/2.jpg',
                 legenda: 'Cada detalhe seu me encanta'
             }
         ];
@@ -212,20 +212,8 @@
         // =============================================
         const musicasRomanticas = [
             {
-                titulo: "Momentos cumplicidade",
-                src: "img/5.jpg"
-            },
-            {
-                titulo: "Cada momento é inclivel ao seu lado ",
-                src: "img/2.jpg"
-            },
-            {
-                titulo: "Para sem juntos, e mais um pouco",
-                src: "img/3.jpg"
-            },
-            {
-                titulo: "Seu sorriso é o mais lindo",
-                src: "img/4.jpg"
+                titulo: "Para vc minha linda",
+                src: "audio/musicaDG.mp4"
             }
         ];
         // =============================================
