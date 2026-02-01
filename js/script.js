@@ -74,7 +74,15 @@
             {
                 url: 'img/2.jpg',
                 legenda: 'Cada detalhe seu me encanta'
-            }
+            },
+            {
+                url: 'img/6.jpg',
+                legenda: 'Fomos até pra praia'
+            },
+            {
+                url: 'img/7.jpg',
+                legenda: 'Te amo doida'
+            },
         ];
         
         let indiceAtual = 0;
